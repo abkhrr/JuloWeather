@@ -2,7 +2,12 @@ package com.juloweather.juloapp.domain.model
 
 import com.google.gson.annotations.SerializedName
 
-object Forecast {
+object WeatherForecast {
+
+    // Wind speed : 1 x 3.6, Because it was m/s and to convert to Km/h it will be x 3.6
+    // Get celsius temp : C = K(Kelvin Values) - 273.15 and Round : String.format("%.2f", d)
+    // Humidity in percent
+    // Rounded Index UV
 
     data class WeatherResponse(
         @SerializedName("base")

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_nav_graph"
+    app:startDestination="@id/fragmentHome">
+
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.juloweather.juloapp.features.home.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/toAddCity"
+            app:destination="@+id/to_add_city_fragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentAddCity"
+        android:name="com.juloweather.juloapp.features.addcity.ui.AddCityFragment"
+        android:label="fragmentAddCity"
+        tools:layout="@layout/fragment_add_city">
+
+        <argument
+            android:name="cityName"
+            app:argType="string"/>
+
+    </fragment>
+
+</navigation>

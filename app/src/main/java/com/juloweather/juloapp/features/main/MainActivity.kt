@@ -1,11 +1,16 @@
-package com.juloweather.juloapp
+package com.juloweather.juloapp.features.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.juloweather.juloapp.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
 }

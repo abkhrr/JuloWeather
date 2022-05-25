@@ -15,36 +15,33 @@ object WebApiProvider {
 
     private val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()
 
-    fun getRetrofit(): Retrofit = Retrofit
+    fun getRetrofit(configUrl: String, configXApiKeys: String, isDebugMode: Boolean): Retrofit = Retrofit
         .Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BuildConfig.BASE_URL)
-        .client(buildRetrofitClient())
+        .baseUrl(configUrl)
+        .client(buildRetrofitClient(configXApiKeys, isDebugMode))
         .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 
-    private fun buildRetrofitClient(): OkHttpClient {
+
+    private fun buildRetrofitClient(configXApiKeys: String, isDebugMode: Boolean): OkHttpClient {
         val builder = OkHttpClient.Builder()
         builder.readTimeout(120, TimeUnit.SECONDS)
         builder.connectTimeout(120, TimeUnit.SECONDS)
 
-        if (BuildConfig.DEBUG) {
+        if (isDebugMode) {
             val interceptor   = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             builder.addInterceptor(interceptor)
-            builder.addInterceptor { chain ->
-                val request    = chain.request().url.newBuilder().addQueryParameter(Const.API_KEY_QUERY, BuildConfig.X_API_KEY).build()
-                val newRequest = chain.request().newBuilder().url(request).build()
-                chain.proceed(newRequest)
-            }
-        } else {
-            builder.addInterceptor { chain ->
-                val request    = chain.request().url.newBuilder().addQueryParameter(Const.API_KEY_QUERY, BuildConfig.X_API_KEY).build()
-                val newRequest = chain.request().newBuilder().url(request).build()
-                chain.proceed(newRequest)
-            }
         }
+
+        builder.addInterceptor { chain ->
+            val request    = chain.request().url.newBuilder().addQueryParameter(Const.API_KEY_QUERY, configXApiKeys).build()
+            val newRequest = chain.request().newBuilder().url(request).build()
+            chain.proceed(newRequest)
+        }
+
         return builder.build()
     }
 

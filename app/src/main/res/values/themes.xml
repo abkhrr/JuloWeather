@@ -1,16 +1,129 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.JuloWeather" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <style name="Theme.JuloWeather" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/COLOR_PRIMARY</item>
+        <item name="colorPrimaryDark">@color/COLOR_PRIMARY</item>
+        <item name="colorAccent">@color/COLOR_PRIMARY_INVERT</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:colorBackground">@color/COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:textColorPrimary">@color/COLOR_TEXT_MAIN_INVERT</item>
+        <item name="android:colorEdgeEffect">@color/COLOR_PRIMARY</item>
+        <item name="android:colorControlActivated">@color/COLOR_ACCENT_PRIMARY</item>
+        <item name="colorControlActivated">@color/COLOR_ACCENT_SECONDARY</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:editTextColor">@color/COLOR_TEXT_NAVIGATION</item>
+        <item name="android:statusBarColor">@color/color_stepper_default</item>
     </style>
+
+    <style name="Theme.JuloWeather.White" parent="Theme.JuloWeather">
+        <item name="colorPrimary">@color/COLOR_PRIMARY</item>
+        <item name="colorPrimaryDark">@color/COLOR_PRIMARY</item>
+        <item name="colorAccent">@color/COLOR_PRIMARY_INVERT</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:colorBackground">@color/COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:textColorPrimary">@color/COLOR_TEXT_MAIN_INVERT</item>
+        <item name="android:colorEdgeEffect">@color/COLOR_PRIMARY</item>
+        <item name="android:colorControlActivated">@color/COLOR_ACCENT_PRIMARY</item>
+        <item name="colorControlActivated">@color/COLOR_ACCENT_SECONDARY</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="android:editTextColor">@color/COLOR_TEXT_NAVIGATION</item>
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <style name="Theme.JuloWeather.NoActionBarAndStatusBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="colorPrimary">@color/transparent</item>
+        <item name="colorPrimaryVariant">@color/transparent</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+
+    <style name="Theme.IPro.NoAction" parent="Theme.JuloWeather">
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorAccent">@color/tomato</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#f00</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#1F6D32</item>
+    </style>
+
+    <style name="NeutraButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#156397</item>
+    </style>
+
+    <style name="SosButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearanceOverlay">@style/ButtonShapeAppearance</item>
+    </style>
+
+    <style name="SosButtonStyleNoCurved" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearanceOverlay">@style/ButtonShapeAppearance_two</item>
+    </style>
+
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+    </style>
+
+    <style name="ButtonShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+    </style>
+
+    <style name="ButtonShapeAppearance_two">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="Theme.IPro.Splash" parent="Theme.JuloWeather">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionMenuTextColor">@color/COLOR_TEXT_NAVIGATION</item>
+        <item name="android:windowBackground">@color/COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.IPro.Camera" parent="Theme.JuloWeather">
+        <item name="colorAccent">@color/COLOR_ACCENT_PRIMARY</item>
+        <item name="actionMenuTextColor">@color/COLOR_TEXT_NAVIGATION</item>
+        <item name="android:windowBackground">@color/COLOR_BACKGROUND_PRIMARY</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.JuloWeather.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.IPro.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.IPro.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>

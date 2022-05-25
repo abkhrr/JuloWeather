@@ -9,6 +9,7 @@ import android.os.Parcelable
 import android.view.View
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import com.juloweather.utils.ext.common.launchDelayedFunction
 
 fun Context.intentTo(c: Class<*>, extIntent: (Intent.() -> Unit)? = null) {
     val intent = Intent(this, c)
@@ -47,6 +48,17 @@ inline fun <reified T : Any> Activity.launchActivityAndFinish(requestCode: Int =
     startActivityForResult(intent, requestCode, options)
     finish()
 }
+
+inline fun <reified T : Any> Activity.launchDelayedActivityAndFinish(requestCode: Int = -1, options: Bundle? = null, noinline init: Intent.() -> Unit = {}) {
+    launchDelayedFunction(3000) {
+        val intent = newIntent<T>(this)
+        intent.init()
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivityForResult(intent, requestCode, options)
+        finish()
+    }
+}
+
 
 
 inline fun <reified T : Any> Context.launchActivity(options: Bundle? = null, noinline init: Intent.() -> Unit = {}) {
