@@ -2,6 +2,7 @@ package com.juloweather.juloapp.di
 
 import com.juloweather.juloapp.JuloWeatherApp
 import com.juloweather.juloapp.base.config.WebApiProvider
+import com.juloweather.juloapp.data.local.db.dao.WeatherDao
 import com.juloweather.juloapp.data.remote.WeatherApiService
 import com.juloweather.juloapp.data.repositoryImpl.WeatherRepositoryImpl
 import com.juloweather.juloapp.domain.repository.WeatherRepository
@@ -29,9 +30,10 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideWeatherRepository(authApiService: WeatherApiService): WeatherRepository =
+    fun provideWeatherRepository(authApiService: WeatherApiService, weatherDao: WeatherDao): WeatherRepository =
         WeatherRepositoryImpl(
-            authApiService
+            authApiService,
+            weatherDao
         )
 
     @Singleton

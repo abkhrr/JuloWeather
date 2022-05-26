@@ -17,8 +17,6 @@ class AddCityFragment : BaseFragment<FragmentAddCityBinding, AddCityViewModel>()
     override val binding: FragmentAddCityBinding by lazy { FragmentAddCityBinding.inflate(layoutInflater) }
     override val viewModel: AddCityViewModel by viewModels()
     override val backToPreviousFragmentOnBackPressed: Boolean = true
-    override val useThemeStatusBarColor: Boolean              = false
-    override val statusBarIconColorWhite: Boolean             = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

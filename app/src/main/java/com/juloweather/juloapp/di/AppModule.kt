@@ -31,11 +31,6 @@ object AppModule {
     @Singleton
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
-        Room.databaseBuilder(context, AppDatabase::class.java, BuildConfig.APPLICATION_ID)
-            .build()
-
-    @Singleton
-    @Provides
-    fun provideWeatherDao(appDatabase: AppDatabase) = appDatabase.weatherDao()
+        Room.databaseBuilder(context, AppDatabase::class.java, BuildConfig.APPLICATION_ID).build()
 
 }

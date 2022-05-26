@@ -114,7 +114,8 @@
     <dimen name="text_x19">72sp</dimen>
     <dimen name="text_x20">76sp</dimen>
     <dimen name="text_x21">82sp</dimen>
-    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_x22">86sp</dimen>
+    <dimen name="text_x23">90sp</dimen>
 
     <dimen name="stepper_tab_text_spacing">12dp</dimen>
     <dimen name="stepper_progress_spacing">6dp</dimen>

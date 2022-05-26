@@ -12,15 +12,12 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.juloweather.juloapp.base.navigation.NavigationCommand
 import com.juloweather.juloapp.base.viewmodel.BaseViewModel
-import com.juloweather.utils.AppUtil.setStatusBarColor
 
 abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
     abstract val binding: VB
     abstract val viewModel: VM
     abstract val backToPreviousFragmentOnBackPressed: Boolean
-    abstract val useThemeStatusBarColor: Boolean
-    abstract val statusBarIconColorWhite: Boolean
     private var onBackPressedCallback: OnBackPressedCallback? = null
 
     override fun onStart() {
@@ -48,11 +45,6 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setStatusBarColor(
-            requireActivity(),
-            useThemeStatusBarColor = useThemeStatusBarColor,
-            iconColorWhite = statusBarIconColorWhite
-        )
         return binding.root
     }
 

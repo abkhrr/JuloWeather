@@ -12,40 +12,9 @@
         <item name="android:colorControlActivated">@color/COLOR_ACCENT_PRIMARY</item>
         <item name="colorControlActivated">@color/COLOR_ACCENT_SECONDARY</item>
         <item name="textAppearanceBody2">@style/TextAppearance.MaterialComponents.Body2</item>
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:editTextColor">@color/COLOR_TEXT_NAVIGATION</item>
-        <item name="android:statusBarColor">@color/color_stepper_default</item>
-    </style>
-
-    <style name="Theme.JuloWeather.White" parent="Theme.JuloWeather">
-        <item name="colorPrimary">@color/COLOR_PRIMARY</item>
-        <item name="colorPrimaryDark">@color/COLOR_PRIMARY</item>
-        <item name="colorAccent">@color/COLOR_PRIMARY_INVERT</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/COLOR_BACKGROUND_PRIMARY</item>
-        <item name="android:colorBackground">@color/COLOR_BACKGROUND_PRIMARY</item>
-        <item name="android:textColorPrimary">@color/COLOR_TEXT_MAIN_INVERT</item>
-        <item name="android:colorEdgeEffect">@color/COLOR_PRIMARY</item>
-        <item name="android:colorControlActivated">@color/COLOR_ACCENT_PRIMARY</item>
-        <item name="colorControlActivated">@color/COLOR_ACCENT_SECONDARY</item>
-        <item name="textAppearanceBody2">@style/TextAppearance.MaterialComponents.Body2</item>
         <item name="android:editTextColor">@color/COLOR_TEXT_NAVIGATION</item>
         <item name="android:statusBarColor">@color/white</item>
     </style>
-
-    <style name="Theme.JuloWeather.NoActionBarAndStatusBar">
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="colorPrimary">@color/transparent</item>
-        <item name="colorPrimaryVariant">@color/transparent</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:fitsSystemWindows">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
-
 
     <style name="Theme.IPro.NoAction" parent="Theme.JuloWeather">
         <item name="colorPrimary">@android:color/transparent</item>

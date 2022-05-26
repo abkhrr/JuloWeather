@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/drawable/bg_gradation_blue.xml" value="0.1875" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/drawable/bg_gradation_orange.xml" value="0.1875" />
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/font/ubuntu_medium.xml" value="0.209375" />
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/activity_launcher.xml" value="0.22" />
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/activity_main.xml" value="0.17916666666666667" />
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/fragment_add_city.xml" value="0.359375" />
-        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/fragment_home.xml" value="0.359375" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/fragment_home.xml" value="0.16" />
       </map>
     </option>
   </component>
