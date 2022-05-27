@@ -52,10 +52,9 @@ ext {
     kotlinStdLib              = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //test
-    jUnitVersion              = '4.12'
+    jUnitVersion              = '4.13.2'
     espressoVersion           = '3.4.0'
     testRunnerVersion         = '1.2.0'
-    jUnitVersion              = '4.12'
     assertJVersion            = '3.8.0'
     mockitoVersion            = '2.8.47'
 

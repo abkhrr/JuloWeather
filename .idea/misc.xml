@@ -5,17 +5,27 @@
       <map>
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/drawable/bg_gradation_blue.xml" value="0.1875" />
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/drawable/bg_gradation_orange.xml" value="0.1875" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/drawable/bg_gradation_pink.xml" value="0.208" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/drawable/ic_add_24_black.xml" value="0.208" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/drawable/ic_baseline_click_24.xml" value="0.208" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/drawable/ic_baseline_click_white_24.xml" value="0.208" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/drawable/ic_magnifying_info_24.xml" value="0.208" />
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/font/ubuntu_medium.xml" value="0.209375" />
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/activity_launcher.xml" value="0.22" />
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/activity_main.xml" value="0.17916666666666667" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/custom_dialog.xml" value="0.359375" />
         <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/fragment_add_city.xml" value="0.359375" />
-        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/fragment_home.xml" value="0.16" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18798771610966442" />
-        <entry key="app/src/main/res/layout/view_rv_item_home.xml" value="0.23072916666666668" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/fragment_saved_cities.xml" value="0.359375" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/fragment_weather_detail.xml" value="0.25" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/view_rv_item_city.xml" value="0.359375" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/view_rv_item_home.xml" value="0.359375" />
+        <entry key="..\:/Project/Assesment/Julo/JuloWeather/app/src/main/res/layout/view_rv_item_weather_prediction.xml" value="0.359375" />
+        <entry key="..\:/pc/AndroidStudio/.gradle/caches/transforms-3/4184db21f6a5d1be502a61fc84d953cc/transformed/core-1.7.0/res/layout/custom_dialog.xml" value="0.359375" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

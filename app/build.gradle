@@ -24,6 +24,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", configProperties['env.baseUrl'])
             buildConfigField("String", "X_API_KEY", configProperties['env.openWeatherApiKey'])
+            buildConfigField("String", "BASE_IMAGE_URL", configProperties['env.baseUrlImage'])
         }
         staging {
             debuggable false
@@ -32,6 +33,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", configProperties['env.baseUrl'])
             buildConfigField("String", "X_API_KEY", configProperties['env.openWeatherApiKey'])
+            buildConfigField("String", "BASE_IMAGE_URL", configProperties['env.baseUrlImage'])
         }
         release {
             debuggable false
@@ -40,9 +42,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", configProperties['env.baseUrl'])
             buildConfigField("String", "X_API_KEY", configProperties['env.openWeatherApiKey'])
+            buildConfigField("String", "BASE_IMAGE_URL", configProperties['env.baseUrlImage'])
         }
     }
-
 }
 
 apply from: "$rootDir/build-system/android/android.gradle"
@@ -59,4 +61,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.test:runner:1.4.0'
 }

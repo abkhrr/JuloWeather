@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.juloweather.juloapp.base.navigation.NavigationCommand
 import com.juloweather.juloapp.base.viewmodel.BaseViewModel
+import com.juloweather.utils.ext.fragment.adjustFontScale
 
 abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
@@ -38,6 +39,11 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment
             is NavigationCommand.Back   -> findNavController().popBackStack()
             is NavigationCommand.BackTo -> findNavController().popBackStack(command.destinationId, false)
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        adjustFontScale(resources.configuration!!)
     }
 
     override fun onCreateView(

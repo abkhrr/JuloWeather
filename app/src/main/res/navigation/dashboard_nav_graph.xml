@@ -13,8 +13,20 @@
         tools:layout="@layout/fragment_home">
 
         <action
+            android:id="@+id/toManageCity"
+            app:destination="@+id/savedCityFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/savedCityFragment"
+        android:name="com.juloweather.juloapp.features.cities.ui.SavedCitiesFragment"
+        android:label="fragment_saved_cities"
+        tools:layout="@layout/fragment_saved_cities">
+
+        <action
             android:id="@+id/toAddCity"
-            app:destination="@+id/to_add_city_fragment"/>
+            app:destination="@+id/fragmentAddCity"/>
 
     </fragment>
 
@@ -24,9 +36,9 @@
         android:label="fragmentAddCity"
         tools:layout="@layout/fragment_add_city">
 
-        <argument
-            android:name="cityName"
-            app:argType="string"/>
+        <action
+            android:id="@+id/toSearchCity"
+            app:destination="@+id/fragmentAddCity"/>
 
     </fragment>
 

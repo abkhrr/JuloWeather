@@ -4,11 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 object WeatherForecast {
 
-    // Wind speed : 1 x 3.6, Because it was m/s and to convert to Km/h it will be x 3.6
-    // Get celsius temp : C = K(Kelvin Values) - 273.15 and Round : String.format("%.2f", d)
-    // Humidity in percent
-    // Rounded Index UV
-
     data class WeatherResponse(
         @SerializedName("base")
         var base: String?,
@@ -23,7 +18,7 @@ object WeatherForecast {
         var coord: Coord?,
 
         @SerializedName("dt")
-        var dt: Int?,
+        var dt: Long?,
 
         @SerializedName("id")
         var id: Int?,
@@ -155,7 +150,7 @@ object WeatherForecast {
             var dewPoint: Double?,
 
             @SerializedName("dt")
-            var dt: Int?,
+            var dt: Long?,
 
             @SerializedName("feels_like")
             var feelsLike: Double?,
@@ -205,7 +200,7 @@ object WeatherForecast {
             var dewPoint: Double?,
 
             @SerializedName("dt")
-            var dt: Int?,
+            var dt: Long?,
 
             @SerializedName("feels_like")
             var feelsLike: FeelsLikeForecast?,
