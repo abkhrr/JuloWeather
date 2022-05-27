@@ -11,8 +11,8 @@ interface WeatherRepository {
     ): ApiResponse<WeatherForecast.WeatherResponse>
 
     suspend fun getForecast(
-        latitude: String,
-        longitude: String,
+        latitude: Double,
+        longitude: Double,
         exclude: String
     ): ApiResponse<WeatherForecast.ForecastResponse>
 

@@ -4,99 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".features.home.ui.HomeFragment"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/view_rv_forecast"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/view_rv_item_home"
+            tools:itemCount="10"
+            android:padding="5dp"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/view_text_locale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fontFamily="@font/ubuntu_medium"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="San Diego, USA"
-                android:layout_marginTop="@dimen/space_x8"
-                android:textSize="@dimen/text_x6"
-                android:textColor="@color/black"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/view_locale_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fontFamily="@font/ubuntu"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view_text_locale"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="Today, 26 May"
-                android:layout_marginTop="@dimen/space_x3"
-                android:textSize="@dimen/text_x5" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/view_btn_add"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                app:layout_constraintTop_toTopOf="@+id/view_text_locale"
-                app:layout_constraintBottom_toBottomOf="@+id/view_text_locale"
-                android:layout_marginEnd="@dimen/space_x4"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:src="@drawable/ic_add_24_black"
-                app:srcCompat="@drawable/ic_add_24_black"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:padding="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/view_locale_date"
-                android:layout_marginTop="@dimen/space_x15"
-                android:background="@drawable/bg_gradation_orange">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/view_img_cloud"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginEnd="@dimen/space_x4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:src="@drawable/ic_svg_weather"
-                    app:srcCompat="@drawable/ic_svg_weather"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/view_text_celsius"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:fontFamily="@font/poppins_bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_img_cloud"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    tools:text="25"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="@dimen/space_x3"
-                    android:textSize="@dimen/text_x23" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/view_celsius"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/view_img_cloud"
-                    app:layout_constraintStart_toEndOf="@+id/view_text_celsius"
-                    android:src="@drawable/ic_svg_celsius"
-                    app:srcCompat="@drawable/ic_svg_celsius"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

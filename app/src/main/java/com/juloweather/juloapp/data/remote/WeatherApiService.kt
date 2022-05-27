@@ -15,8 +15,8 @@ interface WeatherApiService {
 
     @GET(ApiEndPoint.GET_FORECAST_DATA)
     suspend fun getForecast(
-        @Query("lat") latitude: String,
-        @Query("lon") longitude: String,
+        @Query("lat") latitude: Double,
+        @Query("lon") longitude: Double,
         @Query("exclude") exclude: String
     ): WeatherForecast.ForecastResponse
 

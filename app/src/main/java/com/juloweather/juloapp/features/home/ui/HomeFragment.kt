@@ -1,6 +1,7 @@
 package com.juloweather.juloapp.features.home.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.juloweather.juloapp.base.BaseFragment
 import com.juloweather.juloapp.databinding.FragmentHomeBinding
@@ -21,6 +22,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adjustFontScale(resources.configuration!!)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setViewData()
+    }
+
+    private fun setViewData(){
+
     }
 
 }

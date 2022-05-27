@@ -18,7 +18,7 @@ class WeatherRepositoryImpl @Inject constructor(
         apiService.getCurrentWeatherByCityName(cityName)
     }
 
-    override suspend fun getForecast(latitude: String, longitude: String, exclude: String): ApiResponse<WeatherForecast.ForecastResponse> = safeApiCall {
+    override suspend fun getForecast(latitude: Double, longitude: Double, exclude: String): ApiResponse<WeatherForecast.ForecastResponse> = safeApiCall {
         apiService.getForecast(latitude, longitude, exclude)
     }
 
