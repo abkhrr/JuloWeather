@@ -1,9 +1,9 @@
 package com.juloweather.juloapp.features.home.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.juloweather.juloapp.BuildConfig
 import com.juloweather.juloapp.R
@@ -14,7 +14,6 @@ import com.juloweather.juloapp.domain.model.WeatherForecast
 import com.juloweather.juloapp.features.home.adapter.WeatherPredictionAdapter
 import com.juloweather.juloapp.features.home.viewmodel.HomeViewModel
 import com.juloweather.utils.date.DateUtils
-import com.juloweather.utils.ext.fragment.adjustFontScale
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.scopes.FragmentScoped
 import kotlin.math.roundToInt
@@ -42,7 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun setupData(){
-        viewModel.getSelectedCityForeCast(viewModel.selectedLat, viewModel.selectedLon)
+        viewModel.getSelectedCityForeCast()
         viewModel.weatherData.observe(viewLifecycleOwner) { forecast ->
             setupDataWithViews(forecast)
         }
@@ -53,25 +52,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         val celsiusValue      = celsiusFromKelvin?.roundToInt()
 
         with(binding){
-            Glide.with(binding.root.context).load("${BuildConfig.BASE_IMAGE_URL}/${data.current?.weather?.get(0)?.icon}.png").into(viewIconWeather)
+            Glide.with(requireContext()).load("${BuildConfig.BASE_IMAGE_URL}/${data.current?.weather?.get(0)?.icon}.png").into(viewIconWeather)
             viewModel.selectedCityName.observe(viewLifecycleOwner) { cityAndCountry -> binding.viewTextLocale.text = cityAndCountry }
             viewLocaleDate.text        = resources.getString(R.string.date_today, data.current?.dt?.let { DateUtils.convertLongToTime(it) })
-            viewTextCelsius.text       = resources.getString(R.string.percentage_value, celsiusValue)
+            viewTextCelsius.text       = resources.getString(R.string.celsius_value, celsiusValue)
             viewTextHumidityValue.text = resources.getString(R.string.percentage_value, data.current?.humidity)
             viewTextWeatherDesc.text   = data.current?.weather?.get(0)?.description
             viewTextWindValue.text     = (data.current?.windSpeed?.times(3.6)).toString()
             viewTextIndexUvValue.text  = data.current?.uvi?.roundToInt().toString()
         }
-
-        setupRv()
+        setupRv(data.daily)
     }
 
-    private fun setupRv(){
+    private fun setupRv(data: List<WeatherForecast.ForecastResponse.DailyForecast>?){
         binding.viewRvWeatherPrediction.apply {
             adapter         = weatherPredictionAdapter
             clipToPadding   = false
             onFlingListener = null
         }
+        if (data != null) {
+            weatherPredictionAdapter.data = data
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getSelectedCityForeCast()
     }
 
 }

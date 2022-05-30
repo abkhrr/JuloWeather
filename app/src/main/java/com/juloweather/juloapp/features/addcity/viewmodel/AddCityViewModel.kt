@@ -30,7 +30,7 @@ class AddCityViewModel @Inject constructor(
                     _weatherData.value = result.data
                 }
                 is ApiResponse.ApiError -> {
-                    showSnack.value = "Error, Api Error."
+                    showSnack.value = result.errorBody?.message
                 }
                 is ApiResponse.NetworkError -> {
                     showSnack.value = "Error, Please Check Your Connections."
@@ -42,18 +42,17 @@ class AddCityViewModel @Inject constructor(
         }
     }
 
-    fun checkFavorite(data: WeatherForecast.WeatherResponse): Boolean {
-        var alreadyFavorite: Boolean = true
+    fun checkFavorite(data: WeatherForecast.WeatherResponse) {
         viewModelScope.launch {
-            val weatherData = data.id?.let { weatherRepository.getFavoriteCity(it) }
-            alreadyFavorite = weatherData != null
+            val weatherData   = data.id?.let { weatherRepository.getFavoriteCity(it) }
+            _isFavorite.value = weatherData != null
         }
-        return alreadyFavorite
     }
 
     fun insertToFavorite(data: WeatherForecast.WeatherResponse){
         viewModelScope.launch {
-            val entities      = WeatherEntities(data.id!!.toInt(), data.coord?.lat!!.toDouble(), data.coord?.lon!!.toDouble(), data.name)
+            val name          = "${data.name}, ${data.sys?.country}"
+            val entities      = WeatherEntities(data.id!!.toInt(), data.coord?.lat!!.toDouble(), data.coord?.lon!!.toDouble(), name)
             weatherRepository.insertFavoriteCity(entities)
             _isFavorite.value = false
         }
@@ -69,16 +68,5 @@ class AddCityViewModel @Inject constructor(
 
     private var _selectedCityName = MutableLiveData<String>()
     val selectedCityName: LiveData<String> get() = _selectedCityName
-
-    private fun setSelectedCityName() {
-        _selectedCityName.value = ""
-    }
-
-    val selectedLon: Double      = 1.0
-    val selectedLat: Double      = 1.0
-
-    init {
-        setSelectedCityName()
-    }
 
 }

@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".JuloWeatherApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,7 +20,8 @@
         android:theme="@style/Theme.JuloWeather">
         <activity
             android:name=".features.splash.LauncherActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.JuloWeather.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

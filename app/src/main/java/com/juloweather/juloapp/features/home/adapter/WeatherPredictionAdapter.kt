@@ -1,6 +1,5 @@
 package com.juloweather.juloapp.features.home.adapter
 
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +8,7 @@ import com.juloweather.juloapp.BuildConfig
 import com.juloweather.juloapp.R
 import com.juloweather.juloapp.databinding.ViewRvItemWeatherPredictionBinding
 import com.juloweather.juloapp.domain.model.WeatherForecast
+import com.juloweather.utils.date.DateUtils.convertLongToTime
 import com.juloweather.utils.recyclerview.DiffUtil
 import kotlin.math.roundToInt
 import kotlin.properties.Delegates
@@ -32,13 +32,11 @@ class WeatherPredictionAdapter: RecyclerView.Adapter<WeatherPredictionAdapter.Vi
 
     inner class ViewHolder(private val binding: ViewRvItemWeatherPredictionBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(data: WeatherForecast.ForecastResponse.DailyForecast){
-            val celsiusFromKelvin = data.temp?.max?.minus(273.15)
-            val celsiusValue      = celsiusFromKelvin?.roundToInt()
-            val dateTime          = System.currentTimeMillis()
-            val result            = data.dt?.let { DateUtils.getRelativeTimeSpanString(it, dateTime, DateUtils.DAY_IN_MILLIS) }
+            val celsiusFromKelvin   = data.temp?.max?.minus(273.15)
+            val celsiusValue        = celsiusFromKelvin?.roundToInt()
 
             Glide.with(binding.root.context).load("${BuildConfig.BASE_IMAGE_URL}/${data.weather?.get(0)?.icon}.png").into(binding.viewWeatherIcon)
-            binding.viewTextWeatherDesc.text = result
+            binding.viewTextWeatherDesc.text = data.dt?.let { convertLongToTime(it) }
             binding.viewTextCelsius.text     = binding.root.resources.getString(R.string.percentage_value, celsiusValue)
             binding.executePendingBindings()
         }

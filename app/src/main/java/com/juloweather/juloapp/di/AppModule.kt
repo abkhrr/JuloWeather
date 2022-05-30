@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.juloweather.juloapp.BuildConfig
 import com.juloweather.juloapp.JuloWeatherApp
+import com.juloweather.juloapp.data.local.AppPreferences
+import com.juloweather.juloapp.data.local.PreferenceImpl
 import com.juloweather.juloapp.data.local.db.AppDatabase
 import com.juloweather.utils.constant.Const
 import com.juloweather.utils.qualifier.PreferenceInfo
@@ -32,5 +34,15 @@ object AppModule {
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
         Room.databaseBuilder(context, AppDatabase::class.java, BuildConfig.APPLICATION_ID).build()
+
+    @Singleton
+    @Provides
+    fun provideWeatherDao(db: AppDatabase) = db.weatherDao()
+
+    @Singleton
+    @Provides
+    fun provideAppPrefs(preferenceImpl: PreferenceImpl): AppPreferences {
+        return preferenceImpl
+    }
 
 }

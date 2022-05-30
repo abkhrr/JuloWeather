@@ -5,8 +5,12 @@
     <string name="weather_prediction">Weather Prediction</string>
     <string name="date_today">Today: %1$s</string>
     <string name="locale_loc">%1$s</string>
-    <string name="percentage_value">%1$d\&#xb0;</string>
+    <string name="celsius_value">%1$d\&#xb0;</string>
+    <string name="percentage_value">%1$d</string>
     <string name="search_city">Search City</string>
     <string name="ops_connection_problem">Oops, We can`t find an internet connection on your cellphone! please check your internet connection. Make sure your mobile data or wifi is on!</string>
     <string name="manage_cities">Manage Cities</string>
+    <string name="index_uv">Index UV</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind_speed">Wind Speed</string>
 </resources>

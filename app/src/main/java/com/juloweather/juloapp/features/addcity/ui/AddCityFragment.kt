@@ -1,7 +1,10 @@
 package com.juloweather.juloapp.features.addcity.ui
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.juloweather.juloapp.BuildConfig
@@ -11,6 +14,7 @@ import com.juloweather.juloapp.base.navigation.NavigationCommand
 import com.juloweather.juloapp.databinding.FragmentAddCityBinding
 import com.juloweather.juloapp.domain.model.WeatherForecast
 import com.juloweather.juloapp.features.addcity.viewmodel.AddCityViewModel
+import com.juloweather.juloapp.features.home.adapter.WeatherPredictionAdapter
 import com.juloweather.utils.date.DateUtils
 import com.juloweather.utils.ext.view.gone
 import com.juloweather.utils.ext.view.visible
@@ -26,6 +30,7 @@ class AddCityFragment : BaseFragment<FragmentAddCityBinding, AddCityViewModel>()
     override val binding: FragmentAddCityBinding by lazy { FragmentAddCityBinding.inflate(layoutInflater) }
     override val viewModel: AddCityViewModel by viewModels()
     override val backToPreviousFragmentOnBackPressed: Boolean = true
+    private var isFavorite = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,33 +42,21 @@ class AddCityFragment : BaseFragment<FragmentAddCityBinding, AddCityViewModel>()
             binding.layoutContainer.gone()
             navigate(NavigationCommand.Back)
         }
-        val cityName = binding.viewEditTextCity.editText?.text.toString()
         binding.btnSearch.setOnClickListener {
+            val cityName = binding.viewEditTextCity.editText?.text.toString()
             viewModel.searchCityByCityName(cityName)
+            setupCityWeatherView()
         }
-        setupCityWeatherView()
     }
 
     private fun setupCityWeatherView(){
         viewModel.weatherData.observe(viewLifecycleOwner) { data ->
             binding.layoutContainer.visible()
-            observeDataFav(data)
-            when(viewModel.checkFavorite(data)) {
-                 true -> {
-                     binding.buttonFav.setOnClickListener {
-                         binding.buttonFav.setImageResource(R.drawable.ic_baseline_star_24)
-                         viewModel.deleteFromFavorite(data)
-                     }
-                }
-                else -> {
-                    binding.buttonFav.setOnClickListener {
-                        binding.buttonFav.setImageResource(R.drawable.ic_baseline_star_outline_24)
-                        viewModel.insertToFavorite(data)
-                    }
-                }
-            }
             val celsiusFromKelvin = data.main?.temp?.minus(273.15)
             val celsiusValue      = celsiusFromKelvin?.roundToInt()
+            viewModel.checkFavorite(data)
+            observeDataFav()
+            binding.buttonFav.setOnClickListener { setFavorite(data) }
 
             with(binding) {
                 Glide.with(binding.root.context).load("${BuildConfig.BASE_IMAGE_URL}/${data.weather?.get(0)?.icon}.png").into(viewIconWeather)
@@ -77,20 +70,30 @@ class AddCityFragment : BaseFragment<FragmentAddCityBinding, AddCityViewModel>()
         }
     }
 
-    private fun observeDataFav(data: WeatherForecast.WeatherResponse){
+    private fun observeDataFav(){
         viewModel.isFavorite.observe(viewLifecycleOwner){
-            if (it){
-                binding.buttonFav.setOnClickListener {
-                    binding.buttonFav.setImageResource(R.drawable.ic_baseline_star_24)
-                    viewModel.deleteFromFavorite(data)
-                }
-            } else {
-                binding.buttonFav.setOnClickListener {
-                    binding.buttonFav.setImageResource(R.drawable.ic_baseline_star_outline_24)
-                    viewModel.insertToFavorite(data)
-                }
-            }
+            isFavorite = it
+            setFavoriteIcon()
         }
+    }
+
+    private fun setFavorite(data: WeatherForecast.WeatherResponse) {
+        if (!isFavorite) {
+            viewModel.insertToFavorite(data)
+        } else {
+            viewModel.deleteFromFavorite(data)
+        }
+    }
+
+    private fun setFavoriteIcon() {
+        binding.buttonFav.setImageDrawable(getFavoriteIcon())
+    }
+
+    private fun getFavoriteIcon(): Drawable? {
+        return if (isFavorite) ContextCompat.getDrawable(
+            requireContext(),
+            R.drawable.ic_baseline_star_24
+        ) else ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_star_outline_24)
     }
 
 }

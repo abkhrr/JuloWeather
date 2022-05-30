@@ -4,7 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="itemClick"
+            type="com.juloweather.juloapp.features.cities.adapter.click.OnClick" />
+
+        <variable
+            name="selectedClick"
+            type="com.juloweather.juloapp.features.cities.adapter.click.SelectedCityClicked" />
+    </data>
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_selection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="@dimen/space_x1"
@@ -23,6 +34,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button_fav"
+                android:onClick="@{ () -> selectedClick.adapterSelectedCityClicked() }"
                 android:layout_marginEnd="@dimen/space_x5"
                 android:layout_marginStart="@dimen/space_x5"
                 tools:text="San Diego, USA"
@@ -40,6 +52,7 @@
                 app:layout_constraintTop_toTopOf="@+id/view_text_locale"
                 app:layout_constraintBottom_toBottomOf="@+id/view_text_locale"
                 android:src="@drawable/ic_baseline_star_24"
+                android:onClick="@{ () -> itemClick.adapterFavClicked() }"
                 android:layout_marginEnd="@dimen/space_x6"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

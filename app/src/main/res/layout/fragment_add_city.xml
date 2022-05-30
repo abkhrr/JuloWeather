@@ -121,7 +121,7 @@
                     android:layout_marginEnd="@dimen/space_x4"
                     app:layout_constraintTop_toTopOf="@+id/view_text_locale"
                     app:layout_constraintBottom_toBottomOf="@+id/view_locale_date"
-                    android:src="@drawable/ic_baseline_star_outline_24"/>
+                    tools:src="@drawable/ic_baseline_star_outline_24"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/view_temp_info"
@@ -190,36 +190,6 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/view_text_weather_prediction"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_x6"
-                    android:text="@string/weather_prediction"
-                    android:textColor="@color/slate_grey"
-                    app:fontFamily="@font/ubuntu"
-                    app:layout_constraintTop_toBottomOf="@+id/view_temp_info"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginStart="@dimen/space_x3"
-                    android:layout_marginTop="@dimen/space_x4"
-                    android:padding="@dimen/space_x2"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/view_rv_weather_prediction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/view_text_weather_prediction"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:overScrollMode="never"
-                    tools:listitem="@layout/view_rv_item_weather_prediction"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    tools:itemCount="3"
-                    android:orientation="horizontal"
-                    android:nestedScrollingEnabled="false"
-                    android:layout_marginTop="@dimen/space_x4"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/view_text_additional_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -227,7 +197,7 @@
                     android:text="@string/weather_additional_info"
                     android:textColor="@color/slate_grey"
                     app:fontFamily="@font/ubuntu"
-                    app:layout_constraintTop_toBottomOf="@+id/view_rv_weather_prediction"
+                    app:layout_constraintTop_toBottomOf="@+id/view_temp_info"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/space_x3"
@@ -260,10 +230,10 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            tools:src="@drawable/ic_wind"/>
+                            android:src="@drawable/ic_wind"/>
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/view_text_wind"
+                            android:id="@+id/view_text_wind_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:fontFamily="@font/montserrat_bold"
@@ -277,15 +247,15 @@
                             android:textSize="@dimen/text_x8" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/view_text_wind_value"
+                            android:id="@+id/view_text_wind"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:fontFamily="@font/poppins_regular"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/view_text_wind"
+                            app:layout_constraintTop_toBottomOf="@+id/view_text_wind_value"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginTop="@dimen/space_x2"
-                            tools:text="Wind Speed"
+                            android:text="@string/wind_speed"
                             android:textColor="@color/nav_gray"
                             android:maxLines="1"
                             android:maxWidth="@dimen/space_x55"
@@ -297,10 +267,69 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/view_humidity"
+                    android:id="@+id/view_index_uv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/view_wind_speed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/space_x4"
+                    android:layout_marginEnd="@dimen/space_x4"
+                    app:cardElevation="@dimen/space_x1"
+                    app:cardCornerRadius="@dimen/space_x4"
+                    app:cardUseCompatPadding="true">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_x8">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/view_img_sun"
+                            android:layout_width="@dimen/space_x10"
+                            android:layout_height="@dimen/space_x10"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:src="@drawable/ic_baseline_wb_sunny_24"/>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/view_text_index_uv_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:fontFamily="@font/montserrat_bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view_img_sun"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="0"
+                            android:layout_marginStart="@dimen/space_x2"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="@dimen/space_x4"
+                            android:textSize="@dimen/text_x8" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/view_text_index_uv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:fontFamily="@font/poppins_regular"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view_text_index_uv_value"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="@dimen/space_x2"
+                            android:text="@string/index_uv"
+                            android:textColor="@color/nav_gray"
+                            android:textSize="@dimen/text_x4" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/view_humidity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/view_index_uv"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/space_x4"
@@ -322,10 +351,10 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            tools:src="@drawable/ic_humidity"/>
+                            android:src="@drawable/ic_humidity"/>
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/view_text_humidity"
+                            android:id="@+id/view_text_humidity_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:fontFamily="@font/montserrat_bold"
@@ -339,15 +368,15 @@
                             android:textSize="@dimen/text_x8" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/view_text_humidity_value"
+                            android:id="@+id/view_text_humidity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:fontFamily="@font/poppins_regular"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/view_text_humidity"
+                            app:layout_constraintTop_toBottomOf="@+id/view_text_humidity_value"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginTop="@dimen/space_x2"
-                            tools:text="Humidity"
+                            android:text="@string/humidity"
                             android:textColor="@color/nav_gray"
                             android:textSize="@dimen/text_x4" />
 

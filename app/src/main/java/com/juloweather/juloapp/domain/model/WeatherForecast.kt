@@ -278,7 +278,7 @@ object WeatherForecast {
             var eve: Double?,
 
             @SerializedName("max")
-            var max: Int?,
+            var max: Double?,
 
             @SerializedName("min")
             var min: Double?,
