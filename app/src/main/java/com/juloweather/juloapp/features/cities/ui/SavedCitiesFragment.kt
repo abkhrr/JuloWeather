@@ -44,9 +44,7 @@ class SavedCitiesFragment : BaseFragment<FragmentSavedCitiesBinding, CitiesViewM
         }
     }
 
-    override fun adapterSelectedCIty(lat: Double, lon: Double, cityName: String) {
-        viewModel.insertSelectedCityLanLon(lat, lon, cityName)
+    override fun adapterSelectedCIty(weatherId: Int, cityName: String) {
+        navigate(NavigationCommand.To(SavedCitiesFragmentDirections.toHome(weatherId.toString(), cityName)))
     }
-
-
 }

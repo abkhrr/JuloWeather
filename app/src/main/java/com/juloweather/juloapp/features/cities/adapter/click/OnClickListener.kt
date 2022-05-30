@@ -4,5 +4,5 @@ import com.juloweather.juloapp.domain.entitites.WeatherEntities
 
 interface OnClickListener {
     fun adapterFavClicked(item: WeatherEntities)
-    fun adapterSelectedCIty(lat: Double, lon: Double, cityName: String)
+    fun adapterSelectedCIty(weatherId: Int, cityName: String)
 }

@@ -27,6 +27,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val viewModel: HomeViewModel by viewModels()
     override val backToPreviousFragmentOnBackPressed: Boolean = false
     private val weatherPredictionAdapter by lazy { WeatherPredictionAdapter() }
+    private val cityName by lazy { arguments?.getString("cityName") ?: "" }
+    private val cityId by lazy { arguments?.getString("weatherId") ?: "" }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,7 +43,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun setupData(){
-        viewModel.getSelectedCityForeCast()
+        if(cityId == ""){
+            viewModel.getForeCast(1642911)
+        } else {
+            viewModel.getForeCast(cityId!!.toString().toInt())
+        }
         viewModel.weatherData.observe(viewLifecycleOwner) { forecast ->
             setupDataWithViews(forecast)
         }
@@ -53,13 +59,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
         with(binding){
             Glide.with(requireContext()).load("${BuildConfig.BASE_IMAGE_URL}/${data.current?.weather?.get(0)?.icon}.png").into(viewIconWeather)
-            viewModel.selectedCityName.observe(viewLifecycleOwner) { cityAndCountry -> binding.viewTextLocale.text = cityAndCountry }
-            viewLocaleDate.text        = resources.getString(R.string.date_today, data.current?.dt?.let { DateUtils.convertLongToTime(it) })
-            viewTextCelsius.text       = resources.getString(R.string.celsius_value, celsiusValue)
-            viewTextHumidityValue.text = resources.getString(R.string.percentage_value, data.current?.humidity)
-            viewTextWeatherDesc.text   = data.current?.weather?.get(0)?.description
-            viewTextWindValue.text     = (data.current?.windSpeed?.times(3.6)).toString()
-            viewTextIndexUvValue.text  = data.current?.uvi?.roundToInt().toString()
+            binding.viewTextLocale.text = decideCityName()
+            viewLocaleDate.text         = resources.getString(R.string.date_today, data.current?.dt?.let { DateUtils.convertLongToTime(it) })
+            viewTextCelsius.text        = resources.getString(R.string.celsius_value, celsiusValue)
+            viewTextHumidityValue.text  = resources.getString(R.string.percentage_value, data.current?.humidity)
+            viewTextWeatherDesc.text    = data.current?.weather?.get(0)?.description
+            viewTextWindValue.text      = (data.current?.windSpeed?.times(3.6)).toString()
+            viewTextIndexUvValue.text   = data.current?.uvi?.roundToInt().toString()
         }
         setupRv(data.daily)
     }
@@ -75,9 +81,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.getSelectedCityForeCast()
+    private fun decideCityName(): String {
+        return if (cityName == "") "Jakarta, ID" else cityName.toString()
     }
-
 }

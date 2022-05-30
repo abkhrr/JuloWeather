@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import com.juloweather.juloapp.BuildConfig
 import com.juloweather.juloapp.JuloWeatherApp
-import com.juloweather.juloapp.data.local.AppPreferences
-import com.juloweather.juloapp.data.local.PreferenceImpl
 import com.juloweather.juloapp.data.local.db.AppDatabase
+import com.juloweather.juloapp.data.local.prefs.AppPrefs
+import com.juloweather.juloapp.data.local.prefs.PreferenceImpl
 import com.juloweather.utils.constant.Const
 import com.juloweather.utils.qualifier.PreferenceInfo
 import dagger.Module
@@ -38,11 +38,5 @@ object AppModule {
     @Singleton
     @Provides
     fun provideWeatherDao(db: AppDatabase) = db.weatherDao()
-
-    @Singleton
-    @Provides
-    fun provideAppPrefs(preferenceImpl: PreferenceImpl): AppPreferences {
-        return preferenceImpl
-    }
 
 }

@@ -7,6 +7,8 @@ import com.juloweather.juloapp.JuloWeatherApp
 import com.juloweather.juloapp.base.config.WebApiProvider
 import com.juloweather.juloapp.data.local.db.AppDatabase
 import com.juloweather.juloapp.data.local.db.dao.WeatherDao
+import com.juloweather.juloapp.data.local.prefs.AppPrefs
+import com.juloweather.juloapp.data.local.prefs.PreferenceImpl
 import com.juloweather.juloapp.data.remote.WeatherApiService
 import com.juloweather.juloapp.data.repositoryImpl.WeatherRepositoryImpl
 import com.juloweather.juloapp.domain.repository.WeatherRepository
@@ -46,4 +48,10 @@ object ApiModule {
     fun provideWeatherApi(retrofit: Retrofit): WeatherApiService = retrofit.create(
         WeatherApiService::class.java
     )
+
+    @Singleton
+    @Provides
+    fun provideAppPrefs(preferenceImpl: PreferenceImpl): AppPrefs {
+        return preferenceImpl
+    }
 }

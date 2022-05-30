@@ -78,10 +78,12 @@ class AddCityFragment : BaseFragment<FragmentAddCityBinding, AddCityViewModel>()
     }
 
     private fun setFavorite(data: WeatherForecast.WeatherResponse) {
-        if (!isFavorite) {
+        isFavorite = if (!isFavorite) {
             viewModel.insertToFavorite(data)
+            true
         } else {
             viewModel.deleteFromFavorite(data)
+            !isFavorite
         }
     }
 

@@ -16,6 +16,14 @@
             android:id="@+id/toManageCity"
             app:destination="@+id/savedCityFragment"/>
 
+        <argument
+            android:name="weatherId"
+            app:argType="string"/>
+
+        <argument
+            android:name="cityName"
+            app:argType="string"/>
+
     </fragment>
 
     <fragment
@@ -27,6 +35,13 @@
         <action
             android:id="@+id/toAddCity"
             app:destination="@+id/fragmentAddCity"/>
+
+        <action
+            android:id="@+id/toHome"
+            app:destination="@+id/fragmentHome"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/dashboard_nav_graph"
+            app:popUpToInclusive="true"/>
 
     </fragment>
 
